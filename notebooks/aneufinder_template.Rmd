@@ -1,0 +1,35 @@
+---
+title: "`r params$report_title`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: united
+    code_folding: hide
+params:
+  report_title: "Check aneuploidy in RNAseq samples"
+  report_author: "Anonymus"
+  tagged_repertoire: "../test_data/samples_list.csv"
+  sample_metadata: "../test_data/samples_meta.csv"
+  condition_column: "Label"
+  condition_order: null
+  species: "hs"
+---
+
+## Setup
+
+### Initialize tools
+
+```{r message=FALSE, warning=FALSE}
+# Import packages
+
+library(tidyr)
+library(purrr)
+library(ggplot2)
+library(ggsci)
+library(ggridges)
+library(plotly)
+library(pheatmap)
+library(DT)
+library(AneuFinder)
+```
