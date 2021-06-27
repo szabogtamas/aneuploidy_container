@@ -23,7 +23,7 @@ RUN install2.r --error \
  RUN R -e "BiocManager::install('GenomicRanges')" && \
      R -e "BiocManager::install('GenomicAlignments')" 
  
- RUN R -e "devtools::install_github('ataudt/aneufinder')" && \
+ RUN R -e "devtools::install_github('ataudt/aneufinderData')" && \
      R -e "devtools::install_github('ataudt/aneufinder')" 
  
  CMD ["/init"]
