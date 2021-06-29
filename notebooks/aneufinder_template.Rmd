@@ -9,7 +9,7 @@ output:
 params:
   report_title: "Check aneuploidy in RNAseq samples"
   report_author: "Anonymus"
-  tagged_repertoire: "../test_data/samples_list.csv"
+  bam_folder: "../test_data/samples_list.csv"
   sample_metadata: "../test_data/samples_meta.csv"
   condition_column: "Label"
   condition_order: null
@@ -33,3 +33,14 @@ library(pheatmap)
 library(DT)
 library(AneuFinder)
 ```
+
+```{r}
+Aneufinder(
+  inputfolder=params$bam_folder, outputfolder='aneu_out',
+  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
+)
+```
+
+
+
+
