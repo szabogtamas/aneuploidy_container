@@ -37,41 +37,16 @@ library(AneuFinder)
 ```{r}
 Aneufinder(
   inputfolder=params$bam_folder, outputfolder='aneu_out',
-  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
-)
-```
-
-```{r}
-Aneufinder(
-  inputfolder='/home/rstudio/local_files/data/Mini_bulk_3', outputfolder='aneu_out',
-  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
-)
-```
-
-```{r}
-Aneufinder(
-  inputfolder='/home/rstudio/local_files/data/Mini_bulk_2b', outputfolder='aneu2b_out',
-  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
-)
-```
-
-```{r}
-Aneufinder(
-  inputfolder='/home/rstudio/local_files/data/Mini_bulk_2', outputfolder='aneu2_out',
-  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
-)
-```
-
-```{r}
-Aneufinder(
-  inputfolder='/home/rstudio/local_files/data/Mini_bulk_1', outputfolder='aneu1_out',
-  numCPU=2, method=c('edivisive', 'dnacopy','HMM')
+  numCPU=2, method=c('edivisive', 'dnacopy', 'HMM')
 )
 ```
 
 ```{r}
 files <- list.files('/home/rstudio/local_files/data/aneu_out/MODELS/method-edivisive', full.names=TRUE)
 hmms <- loadFromFiles(files)
+```
+
+```{r}
 cl <- clusterByQuality(hmms)
 heatmapGenomewide(cl$classification[[1]])
 ```
@@ -80,9 +55,7 @@ heatmapGenomewide(cl$classification[[1]])
 plot(files[1], type='karyogram')
 ```
 
-http://bioconductor.org/packages/release/bioc/vignettes/AneuFinder/inst/doc/AneuFinder.pdf
-
 ```{r}
-
+heatmapGenomewide(hmms, cluster=FALSE)
 ```
 
