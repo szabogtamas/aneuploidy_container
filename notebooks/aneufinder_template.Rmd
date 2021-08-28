@@ -52,6 +52,10 @@ heatmapGenomewide(cl$classification[[1]])
 ```
 
 ```{r}
+getBreakpoints(hmms[[1]])
+```
+
+```{r}
 plot(files[1], type='karyogram')
 ```
 
