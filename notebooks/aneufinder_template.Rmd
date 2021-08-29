@@ -59,7 +59,7 @@ getBreakpoints(hmms[[1]])
 plot(files[1], type='karyogram')
 ```
 
-```{r}
+```{r fig.width=16, fig.height=9}
 heatmapGenomewide(hmms, cluster=FALSE)
 ```
 
