@@ -63,3 +63,7 @@ plot(files[1], type='karyogram')
 heatmapGenomewide(hmms, cluster=FALSE)
 ```
 
+```{r fig.width=16, fig.height=9}
+aneu_df <- heatmapAneuploidies(hmms, as.data.frame=TRUE)
+head(aneu_df)
+```
