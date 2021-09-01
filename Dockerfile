@@ -20,6 +20,7 @@ RUN install2.r --error \
     ggsci \
     ggExtra \
     ggridges \
+    gginnards \
     openxlsx \
     readxl
  
