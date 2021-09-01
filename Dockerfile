@@ -25,7 +25,8 @@ RUN install2.r --error \
     readxl
  
  RUN R -e "BiocManager::install('GenomicRanges')" && \
-     R -e "BiocManager::install('GenomicAlignments')" 
+     R -e "BiocManager::install('GenomicAlignments')" && \
+     R -e "BiocManager::install('Repitools')" 
  
  RUN R -e "devtools::install_github('ataudt/aneufinderData')" && \
      R -e "devtools::install_github('ataudt/aneufinder')" 
