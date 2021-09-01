@@ -68,6 +68,10 @@ heatmapGenomewide(hmms, cluster=FALSE)
 ```
 
 ```{r fig.width=16, fig.height=9}
+heatmapAneuploidies(hmms)
+```
+
+```{r fig.width=16, fig.height=9}
 aneu_df <- heatmapAneuploidies(hmms, as.data.frame=TRUE)
 head(aneu_df)
 ```
