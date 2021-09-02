@@ -75,3 +75,31 @@ heatmapAneuploidies(hmms)
 aneu_df <- heatmapAneuploidies(hmms, as.data.frame=TRUE)
 head(aneu_df)
 ```
+
+```{r}
+aneuploidy_df <- hmms %>%
+  purrr::map_dfr(function (x) annoGR2DF(x$segments), .id='FILE_LABEL') %>%
+  mutate(
+    SAMPLE_ID = basename(FILE_LABEL),
+    SAMPLE_ID = gsub('\\.bam.*', '', SAMPLE_ID),
+    SAMPLE_POS = as.numeric(factor(SAMPLE_ID)),
+  )
+
+head(aneuploidy_df)
+```
+
+```{r}
+aneuploidy_df %>%
+  ggplot(aes(
+    xmin = start, xmax = end, ymin = SAMPLE_POS - 1 , ymax = SAMPLE_POS - 0.2,
+    fill = state
+  )) +
+  geom_rect() +
+  scale_fill_npg() +
+  facet_wrap("chr", scale="free_x", nrow=3, strip.position="bottom") +
+  theme(
+    axis.text.x = element_blank(),
+    axis.ticks = element_blank()
+  )
+```
+
