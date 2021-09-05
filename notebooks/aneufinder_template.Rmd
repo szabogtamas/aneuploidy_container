@@ -14,6 +14,7 @@ params:
   condition_column: "Label"
   condition_order: null
   species: "hs"
+  num_cpu: 4
 ---
 
 ## Setup
@@ -38,7 +39,7 @@ library(Repitools)
 ```{r}
 Aneufinder(
   inputfolder=params$bam_folder, outputfolder='aneu_out',
-  numCPU=2, method=c('edivisive', 'dnacopy', 'HMM')
+  numCPU=params$num_cpu, method=c('edivisive', 'dnacopy', 'HMM')
 )
 ```
 
@@ -70,6 +71,10 @@ heatmapGenomewide(hmms, cluster=FALSE)
 
 ```{r fig.width=16, fig.height=9}
 heatmapAneuploidies(hmms)
+```
+
+```{r}
+karyotypeMeasures(files)
 ```
 
 ```{r fig.width=16, fig.height=9}
