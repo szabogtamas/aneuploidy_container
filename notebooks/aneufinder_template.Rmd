@@ -13,7 +13,6 @@ params:
   sample_metadata: "../test_data/samples_meta.csv"
   condition_column: "Label"
   condition_order: null
-  species: "hs"
   num_cpu: 4
 ---
 
