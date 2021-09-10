@@ -108,3 +108,15 @@ aneuploidy_df %>%
   )
 ```
 
+```{r}
+edivisive_scores <- files %>%
+  setNames(., basename(.)) %>%
+  map(karyotypeMeasures) %>%
+  map_dfr(~bind_rows(
+    tibble::rownames_to_column(.x$per.chromosome, "Chr"),
+    mutate(.x$genomewide, Chr="GN")
+  ), .id="SAMPLE_FILE") %>%
+  mutate(
+    METHOD = "edivisive"
+  )
+```
