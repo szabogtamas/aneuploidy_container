@@ -134,3 +134,18 @@ edivisive_scores %>%
     x="", title="Genome-wide aneuploidy scores"
   )
 ```
+
+```{r}
+dnacopy_matrix <- edivisive_scores %>%
+  filter(Chr %in% c(seq(1, 21), "X", "Y")) %>%
+  select(SAMPLE_LABEL, SAMPLE_ID, Aneuploidy, Chr) %>%
+  pivot_wider(values_from=Aneuploidy, names_from=Chr)
+
+dnacopy_matrix %>%
+  tibble::column_to_rownames("SAMPLE_ID") %>%
+  heatmaply(
+    dendrogram = FALSE, hide_colorbar = TRUE,
+    row_side_colors = "SAMPLE_LABEL", row_side_palette = pal_npg(),
+    main = "Chromosome-wise aneuploidy scores according to edvisive method"
+  )
+```
