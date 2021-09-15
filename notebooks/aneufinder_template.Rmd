@@ -149,3 +149,20 @@ dnacopy_matrix %>%
     main = "Chromosome-wise aneuploidy scores according to edvisive method"
   )
 ```
+
+```{r fig.width=7.2, fig.height=7.2}
+long_aneu_scores edivisive_scores %>%
+  filter(Chr %in% c(seq(1, 21), "X", "Y")) %>%
+  ggplot(aes(x=SAMPLE_LABEL, y=Aneuploidy, fill=SAMPLE_LABEL)) +
+  geom_boxplot(position="dodge") +
+  facet_wrap("Chr", nrow=3, strip.position="bottom") +
+  scale_fill_npg() +
+  theme_bw() +
+  theme(
+    axis.ticks = element_blank(),
+    axis.text.x = element_blank()
+  ) +
+  labs(
+    x="", title="Chromosome-wise aneuploidy scores (dnacopy) by condition"
+  )
+```
